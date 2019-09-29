@@ -11,9 +11,9 @@ func main() {
 	log.Println("Setting up JWT microservice!")
 
 	router := mux.NewRouter()
-	router.HandleFunc("/signin", Signin).Methods("POST")
-	router.HandleFunc("/welcome", Welcome).Methods()
-	router.HandleFunc("/refresh", Refresh).Methods()
+	router.HandleFunc("/signin", signin)
+	router.HandleFunc("/welcome", welcome)
+	router.HandleFunc("/refresh", refresh)
 
 	log.Println("Starting JWT microservice!")
 	log.Fatal(http.ListenAndServe(":8080", nil))
