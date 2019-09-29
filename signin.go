@@ -70,10 +70,13 @@ func signin(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusInternalServerError)
 	}
 
-	// set an HTTP cookie for the token
-	http.SetCookie(w, &http.Cookie{
+	// bake the cookie to send to the browser
+	cookie := &http.Cookie{
 		Name:    "token",
 		Value:   tokenString,
 		Expires: expirationTime,
-	})
+	}
+
+	// set an HTTP cookie for the token
+	http.SetCookie(w, cookie)
 }
