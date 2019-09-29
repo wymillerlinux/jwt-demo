@@ -10,11 +10,12 @@ import (
 func main() {
 	log.Println("Setting up JWT microservice!")
 
-	router := mux.NewRouter()
+	router := mux.NewRouter().StrictSlash(true)
+	router.HandleFunc("/", root)
 	router.HandleFunc("/signin", signin)
-	router.HandleFunc("/welcome", welcome)
-	router.HandleFunc("/refresh", refresh)
+	//router.HandleFunc("/welcome", welcome)
+	//router.HandleFunc("/refresh", refresh)
 
 	log.Println("Starting JWT microservice!")
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Fatal(http.ListenAndServe(":11111", nil))
 }
