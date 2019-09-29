@@ -13,7 +13,8 @@ var jwtKey = []byte("secret_key")
 // in memory map to store passwords and username
 // TODO: add database later
 var users = map[string]string{
-	"user": "password",
+	"user1": "password1",
+	"user2": "password2",
 }
 
 type credentials struct {
@@ -40,7 +41,7 @@ func signin(w http.ResponseWriter, r *http.Request) {
 
 	// get the password from in memory map
 	// TODO: add database
-	expectedPassword, ok := users[creds.Username]
+	expectedPassword, ok := users[creds.Password]
 
 	// if the password exists for the given user and if it's the same password we received,
 	// move on my wayward son. if not, return an HTTP 401 (unauthorized)
