@@ -1,8 +1,17 @@
 package main
 
-import "fmt"
+import (
+	"log"
+	"net/http"
+)
 
 func main() {
-	fmt.Println("Setting up JWT microservice!")
+	log.Println("Setting up JWT microservice!")
 
+	http.HandleFunc("/signin", Signin)
+	http.HandleFunc("/welcome", Welcome)
+	http.HandleFunc("/refresh", Refresh)
+
+	log.Println("Starting JWT microservice!")
+	log.Fatal(http.ListenAndServe(":8080", nil))
 }
