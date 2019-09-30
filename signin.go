@@ -43,7 +43,7 @@ func signin(w http.ResponseWriter, r *http.Request) {
 
 	// get the password from in memory map
 	// TODO: add database
-	expectedPassword, ok := users[creds.Username]
+	expectedPassword, ok := users[creds.Password]
 
 	// if the password exists for the given user and if it's the same password we received,
 	// move on my wayward son. if not, return an HTTP 401 (unauthorized)
