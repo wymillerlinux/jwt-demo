@@ -6,11 +6,7 @@ import (
 	"crypto/rand"
 )
 
-// Encrypt will encrypt a raw string to
-// an encrypted value
-// an encrypted value has an IV (nonce) + actual encrypted value
-// when we decrypt, we only decrypt the latter part
-func Encrypt(key []byte) ([]byte, error) {
+func encrypt(key []byte) ([]byte, error) {
 	secretKey := getSecret()
 
 	block, err := aes.NewCipher(secretKey)

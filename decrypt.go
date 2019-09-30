@@ -5,8 +5,7 @@ import (
 	"crypto/cipher"
 )
 
-// Decrypt will return the original value of the encrypted string
-func Decrypt(encryptedKey []byte) ([]byte, error) {
+func decrypt(encryptedKey []byte) ([]byte, error) {
 	secretKey := getSecret()
 
 	block, err := aes.NewCipher(secretKey)
