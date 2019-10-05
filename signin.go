@@ -9,7 +9,7 @@ import (
 	"github.com/dgrijalva/jwt-go"
 )
 
-var jwtKey = []byte("my_secret_key")
+var jwtKey = newRandomKey()
 
 // in memory map to store passwords and username
 // TODO: add database later
@@ -43,7 +43,7 @@ func signin(w http.ResponseWriter, r *http.Request) {
 
 	// get the password from in memory map
 	// TODO: add database
-	expectedPassword, ok := users[creds.Password]
+	expectedPassword, ok := users[creds.Username]
 
 	// if the password exists for the given user and if it's the same password we received,
 	// move on my wayward son. if not, return an HTTP 401 (unauthorized)
